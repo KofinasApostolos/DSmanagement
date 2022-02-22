@@ -10,6 +10,7 @@ namespace WebApi.Models
         {
         }
 
+
         public DanceSchoolContext(DbContextOptions<DanceSchoolContext> options)
             : base(options)
         {
