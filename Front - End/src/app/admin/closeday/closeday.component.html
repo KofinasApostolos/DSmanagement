@@ -1,0 +1,11 @@
+<form #closeDayForm="ngForm" class="text-center border border-light p-5">
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+    This operation gets executed every day on closing of Dance School and updates users subscriptions if expired.
+  </div>
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <button name="closeday" mat-fab color="warn" (click)="closeDay()" name="closeday" type="submit"><i
+      class="fa fa-refresh"></i></button>
+</form>

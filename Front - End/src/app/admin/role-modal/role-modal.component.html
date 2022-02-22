@@ -1,0 +1,49 @@
+<h4 mat-dialog-title>Insert Role</h4>
+
+<mat-dialog-content>
+  <form #roleForm="ngForm">
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Role id</mat-label>
+          <input matInput type="text" id="RoleCode" [(ngModel)]="model.RoleCode" name="RoleCode" #RoleCodec="ngModel"
+            placeholder="Value 0-5" maxlength="1" required>
+          <mat-error *ngIf="RoleCodec?.hasError('required')">
+            {{getErrorMessage("user role","required")}}
+          </mat-error>
+          <mat-error *ngIf="RoleCodec?.hasError('minlength')">
+            {{getErrorMessage("user role","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="RoleCodec?.hasError('maxlength')">
+            {{getErrorMessage("user role","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Role id</mat-label>
+          <input matInput type="text" [(ngModel)]="model.RoleDescr" #RoleFullDescr="ngModel" name="RoleDescr"
+            id="RoleDescr" placeholder="Role Description" maxlength="50" minlength="4" required>
+          <mat-error *ngIf="RoleFullDescr?.hasError('required')">
+            {{getErrorMessage("user role","required")}}
+          </mat-error>
+          <mat-error *ngIf="RoleFullDescr?.hasError('minlength')">
+            {{getErrorMessage("user role","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="RoleFullDescr?.hasError('maxlength')">
+            {{getErrorMessage("user role","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!roleForm.valid" (click)="onConfirm()" name="Close"
+    color="primary" type="submit"><i class="fa fa-save fa-lg"></i> Save</button>
+  <button color="warn" mat-raised-button mat-dialog-close name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

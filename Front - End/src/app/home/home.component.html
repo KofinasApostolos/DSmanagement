@@ -1,0 +1,165 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+
+<div style="background-image: url('../../assets/studio.png');" class="center">
+  <div class="container">
+    <form style="background-color: rgba(255,255,255,0.6);" [formGroup]="registerForm"
+      class="text-center border border-light p-5" (ngSubmit)="register()">
+      <h2>Sign Up</h2>
+      <hr>
+      <div class="form-row mb-4">
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" placeholder="Username" formControlName="username" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['username']?.invalid">
+              {{getErrorMessage("text","username")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row mb-4">
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Firstname</mat-label>
+            <input matInput type="text" placeholder="Firstname" formControlName="firstname" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['firstname']?.invalid">
+              {{getErrorMessage("text","firstname")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Lastname</mat-label>
+            <input matInput type="text" placeholder="Lastname" formControlName="lastname" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['lastname']?.invalid">
+              {{getErrorMessage("text","lastname")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput type="text" [ngClass]="{'is-invalid': registerForm.get('city').errors
+            && registerForm.get('city').touched}" placeholder="City" formControlName="city" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['city']?.invalid">
+              {{getErrorMessage("text","city")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Area</mat-label>
+            <input matInput type="text" [ngClass]="{'is-invalid': registerForm.get('area').errors
+            && registerForm.get('area').touched}" placeholder="Area" formControlName="area" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['area']?.invalid">
+              {{getErrorMessage("text","area")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Street</mat-label>
+            <input matInput type="text" placeholder="Street" formControlName="street" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['street']?.invalid">
+              {{getErrorMessage("text","street")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Phonenumber</mat-label>
+            <input matInput type="text" placeholder="Phonenumber" formControlName="phonenumber" required maxlength="50">
+            <mat-error *ngIf="registerForm.controls['phonenumber']?.invalid">
+              {{getErrorMessage("text","phonenumber")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Birthdate</mat-label>
+            <input matInput [matDatepicker]="picker" id="birthdate" placeholder="Birthdate" formControlName="birthdate"
+              name="birthdate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="registerForm.controls['birthdate']?.invalid">
+              {{getErrorMessage("date","birthdate")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" required
+              maxlength="50">
+            <mat-error *ngIf="registerForm.controls['email']?.invalid">
+              {{getErrorMessage("email","email")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row mb-4">
+        <div class="col">
+
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" #input formControlName="password" placeholder="Password" required
+              maxlength="50">
+            <mat-icon (click)="showPassword(input)" class="fa"
+              [ngClass]="{'fa-eye': collapse, 'fa-eye-slash': !collapse}" matSuffix color="primary"></mat-icon>
+            <mat-error *ngIf="registerForm.controls['password']?.invalid">
+              {{getErrorMessage("password","password")}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <password-strength-meter [password]="registerForm.get('password').value"></password-strength-meter>
+      <div class="form-group  mb-4">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Confirm</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" required
+            [errorStateMatcher]="matcher" maxlength="50">
+          <mat-error *ngIf="registerForm.hasError('mismatch')">
+            Passwords not match
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <form [formGroup]="resetpassForm" class="text-center">
+        <div class="d-flex justify-content-around">
+          <div>
+            <a class="item" style="color: white;" (click)="remindPassword()">Forgot password?</a>
+          </div>
+        </div>
+        <br>
+        <div *ngIf="showRemindPassword" class="form-group">
+
+          <mat-form-field class="maxwidth" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" required>
+            <mat-error *ngIf="resetpassForm.controls['email']?.invalid">
+              {{getErrorMessage("email","email")}}
+            </mat-error>
+          </mat-form-field>
+          <br>
+          <button mat-raised-button class="btnblock" color="primary" [disabled]="!resetpassForm.valid"
+            (click)="getLostPassword()" id="lostpassword" type="button"><i class="fa fa-paper-plane fa-lg"></i>
+            Send</button>
+        </div>
+      </form>
+      <hr>
+      <div class="form-group text-center">
+        <button mat-raised-button class="btnblock" color="primary" type="submit" [disabled]="!registerForm.valid"><i
+            class="fa fa-check fa-lg"></i>
+          Register</button>
+      </div>
+    </form>
+  </div>
+</div>

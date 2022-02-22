@@ -1,0 +1,92 @@
+C:\Users\MrRobot\source\repos\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\Users\MrRobot\source\repos\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\Users\MrRobot\source\repos\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\Users\MrRobot\source\repos\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\MrRobot\source\repos\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\source\repos\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\Users\MrRobot\Desktop\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\Users\MrRobot\Desktop\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\Users\MrRobot\Desktop\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\Πτυχιακη Κοφινας\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\MrRobot\Desktop\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.genruntimeconfig.cache
+C:\Users\Apostolis\Desktop\Πτυχιακη\DanceSchool-main\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csprojAssemblyReference.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\appsettings.json
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.deps.json
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.json
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.runtimeconfig.dev.json
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.dll
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\bin\Debug\netcoreapp2.1\WebApi.pdb
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.AssemblyReference.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfoInputs.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.AssemblyInfo.cs
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.csproj.CoreCompileInputs.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorAssemblyInfo.cs
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.RazorTargetAssemblyInfo.cache
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.dll
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.pdb
+C:\VSprojects\Πτυχιακη\DanceSchoolManagment\WebApi\WebApi\obj\Debug\netcoreapp2.1\WebApi.genruntimeconfig.cache

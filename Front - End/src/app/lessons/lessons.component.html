@@ -1,0 +1,14 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <h2 style="text-align: center;">Lessons</h2>
+  <hr>
+  <div class="row">
+    <div *ngFor="let lessons of lessons" style="padding: 5px;">
+      <app-lesson-card [lessons]="lessons"></app-lesson-card>
+    </div>
+  </div>
+  <hr>
+  <app-footer></app-footer>
+</div>

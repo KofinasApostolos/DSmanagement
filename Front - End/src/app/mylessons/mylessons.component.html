@@ -1,0 +1,58 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <h2 style="text-align: center;">Teaching Lessons</h2>
+  <hr>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="Lesson">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Lesson" [disabled]="!row.editing">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Day">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Day </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Day" [disabled]="!row.editing">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Lessonstart">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson start</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Lessonstart" [disabled]="!row.editing">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Lessonend">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson end </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Lessonend" [disabled]="!row.editing">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <hr>
+  <app-footer></app-footer>
+</div>

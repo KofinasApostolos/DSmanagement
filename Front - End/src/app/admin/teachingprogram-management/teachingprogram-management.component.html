@@ -1,0 +1,108 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <input matInput type="text" style="text-align:center" [(ngModel)]="row.Id" [disabled]="true">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lesson">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-select [disabled]="true" [(ngModel)]="row.Lessonid" placeholer="Lesson" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let lesson of lesson" [value]="lesson.Lessonid">{{lesson.Lesson}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Dayofweek">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Day </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-select [disabled]="!row.editing" [(ngModel)]="row.Dayofweek" placeholer="Day" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let d of day" [value]="d.Id">{{d.Descr}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lessonstart">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson Start </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="time" [(ngModel)]="row.Lessonstart" [disabled]="!row.editing" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lessonend">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson End </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="time" [(ngModel)]="row.Lessonend" [disabled]="!row.editing" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Capacity">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Capacity </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input [disabled]="!row.editing" placeholder="Capacity 0-50" min="1" max="50" type="number"
+            [(ngModel)]="row.Capacity" id="Capacity" matInput>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="accent" (click)="createTeachingProgram()" matTooltip="Create new record"><i
+            class="fa fa-plus mat-icon fa-lg"></i></button>
+        <button matTooltip="Export to Excel" mat-icon-button style="color: green;"
+          (click)="exportXLSTeachingProgram()"><i class="fa fa-file-excel-o mat-icon fa-lg"></i></button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          matTooltip="Start editing" *ngIf="!row.editing">
+          <i class="fa fa-pencil mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          matTooltip="Stop editing" *ngIf="row.editing">
+          <i class="fa fa-check mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="warn" focusable="false" *ngIf="!row.editing"
+          (click)="deleteTeachingProgram(row.Id)" matTooltip="Delete record" [disabled]="row.editing">
+          <i class="fa fa-times mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button style="color: green;" focusable="false" matTooltip="Save changes"
+          (click)="updateTeachingProgram(row.Id, row.Lessonid, row.Dayofweek, row.Lessonstart, row.Lessonend, row.Capacity)"
+          [disabled]="row.editing">
+          <i class="fa fa-save mat-icon fa-lg"></i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+    <mat-progress-spinner color="primary" mode="indeterminate">
+    </mat-progress-spinner>
+  </mat-card>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

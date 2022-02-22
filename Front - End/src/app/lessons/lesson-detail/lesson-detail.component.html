@@ -1,0 +1,111 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="card" style="background-color: whitesmoke;">
+        <img class="card-img-top img-thumbnail" onerror="this.src='../../assets/dance.png'"
+          src="{{customLessonAr[0]?.ImageurlLesson}}" alt="lesson image"
+          style="display:block;width:100%;height:250px;overflow:hidden;">
+        <div class="card-body">
+          <div>
+            <strong>Lesson</strong>
+            <p>{{customLessonAr[0]?.Lesson}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button mat-raised-button color="warn" (click)="openYoutubeModal()"><i class="fa fa-youtube-play fa-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="tab-panel">
+        <mat-tab-group mat-align-tabs="start">
+          <mat-tab label="Teacher Info">
+            <img class="card-img-top img-thumbnail" src="{{customLessonAr[0]?.ImageurlTeacher}}"
+              onerror="this.src='../../assets/default.png'" alt="teacher image"
+              style="display:block;height:150px;width:150px;overflow:hidden;">
+            <br>
+            <h6>Teacher</h6>
+            <p>{{customLessonAr[0]?.Lastname + " " + customLessonAr[0]?.Firstname}}</p>
+            <h6>Teacher Description</h6>
+            <mat-form-field class="maxwidth" appearance="fill">
+              <textarea matInput style="overflow-y: scroll; overflow-x: hidden; cursor: default;" readonly type="text"
+                rows="5">{{customLessonAr[0]?.DescrTeacher}}
+              </textarea>
+            </mat-form-field>
+            <!-- <p>{{customLessonAr[0]?.DescrTeacher}}</p> -->
+          </mat-tab>
+          <mat-tab label="Lesson Description">
+            <mat-form-field class="maxwidth" appearance="fill">
+              <textarea matInput style="overflow-y: scroll; overflow-x: hidden; cursor: default;" readonly type="text"
+                rows="10">{{customLessonAr[0]?.DescrLesson}}
+              </textarea>
+            </mat-form-field>
+          </mat-tab>
+          <mat-tab label="Select Subscription">
+            <div class="alert1 alert-info">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              After buying your subscription, select the box below to participate in the next lesson!
+            </div>
+            <br>
+            <div *ngIf="visible" class="alert">
+              <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+              All departments of the lesson are full, You cannot buy subscription. For more
+              informations contact with us!
+            </div>
+            <h6>Select Subscription</h6>
+            <div class="row mt-5">
+              <div *ngFor="let temp3 of subsAr;" class="col-lg-2 col-md-3 col-sm-6">
+                <div class="card mb-4" style="width:100%; background-color: aliceblue;">
+                  <div class="card-img-wrapper">
+                    <img class="card-img-top" src="" alt="">
+                    <ul class="list-inline member-icons animate text-center">
+                      <li class="list-inline-item">
+                        <button class="matbutton" mat-raised-button color="primary" (click)="subscribe(temp3)">
+                          <i class="fa fa-caret-square-o-up"></i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body p-1">
+                    <h6 class="card-title text-center mb-1">
+                      {{"Months: " + temp3?.Duration}}
+                      <!-- " Price: " + temp3?.Price -->
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <h6>After subscribed, check in to your class</h6>
+            <div class="row mt-5">
+              <div *ngFor="let temp of tpAr;" class="col-lg-2 col-md-3 col-sm-6">
+                <div class="card mb-4" style="width:100%; background-color: aliceblue;">
+                  <div class="card-img-wrapper">
+                    <img class="card-img-top" src="" alt="">
+                    <ul class="list-inline member-icons animate text-center">
+                      <li class="list-inline-item">
+                        <button class="matbutton" mat-raised-button color="primary" (click)="registerClassroom(temp)">
+                          <i class="fa fa-caret-square-o-up"></i>
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="card-body p-1">
+                    <h6 class="text-center mb-1">
+                      {{temp?.Dayofweek + " " + temp?.Lessonstart + "-" + temp?.Lessonend }}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <app-footer></app-footer>
+</div>

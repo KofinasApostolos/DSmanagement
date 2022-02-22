@@ -1,0 +1,82 @@
+<h4 mat-dialog-title>Insert Subscription</h4>
+<mat-dialog-content>
+  <form #subscriptionForm="ngForm">
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Lesson</mat-label>
+          <mat-select #lessonidv="ngModel" [(ngModel)]="model.Lessonid" #Lessonv="ngModel" name="selectedValue"
+            id="selectedValue" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let lessons of lessons" [value]="lessons.Lessonid">
+              {{lessons.Lesson}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Lessonv?.hasError('required')">
+            {{getErrorMessage("lesson","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Duration</mat-label>
+          <input matInput placeholder="Duration" min="1" max="12" type="number" #Durationv="ngModel" name="Duration"
+            [(ngModel)]="model.Duration" id="Duration" required>
+          <mat-error *ngIf="Durationv?.hasError('required')">
+            {{getErrorMessage("duration","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput appIsDecimalDirective type="text" [(ngModel)]="model.Price" #Pricev="ngModel" name="Price"
+            id="Price" placeholder="00.00 Price" maxlength="5" minlength="5" required>
+          <mat-error *ngIf="Pricev?.hasError('required')">
+            {{getErrorMessage("price","required")}}
+          </mat-error>
+          <mat-error *ngIf="Pricev?.hasError('minlength')">
+            {{getErrorMessage("price","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Pricev?.hasError('maxlength')">
+            {{getErrorMessage("price","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Discount</mat-label>
+          <input matInput appIsDecimalDirective type="text" [(ngModel)]="model.Discprice" #Discpricev="ngModel"
+            name="Discprice" id="DiscPrice" placeholder="00.00 Discount" maxlength="5" minlength="5"
+            [disabled]="discount">
+          <mat-error *ngIf="Discpricev?.hasError('required')">
+            {{getErrorMessage("discount price","required")}}
+          </mat-error>
+          <mat-error *ngIf="Discpricev?.hasError('minlength')">
+            {{getErrorMessage("discount price","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Discpricev?.hasError('maxlength')">
+            {{getErrorMessage("discount price","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-checkbox id="discount" [(ngModel)]="model.Discount" #Discountv="ngModel" name="discount"
+          (change)="showOptions($event)" class="example-margin">Discount
+        </mat-checkbox>
+      </div>
+    </div>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!subscriptionForm.valid" color="primary"
+    (click)="onConfirm()" name="Save" type="submit"><i class="fa fa-save fa-lg"></i> Save</button>
+  <button mat-raised-button mat-dialog-close color="warn" name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

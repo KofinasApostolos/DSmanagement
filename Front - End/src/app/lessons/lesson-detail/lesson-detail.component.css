@@ -1,0 +1,54 @@
+.col-sm-8 {
+  -webkit-box-flex: 0;
+  flex: 0 0 66.6666666667%;
+  /* max-width: 66.6666666667%; */
+  margin-top: 30px;
+}
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(0.25rem - 1px);
+  margin-top: 25px;
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.alert-info {
+  color: #3f51b5;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert1 {
+  padding: 20px;
+  background-color: #3f51b5;
+  color: white;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.matbutton:hover {
+  color: hsl(231, 61%, 67%);
+}
+
+::ng-deep .mat-tab-body-content {
+  overflow-x: hidden !important;
+}

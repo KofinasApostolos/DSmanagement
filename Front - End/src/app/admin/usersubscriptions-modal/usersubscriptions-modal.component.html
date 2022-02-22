@@ -1,0 +1,103 @@
+<h4 mat-dialog-title>Insert User Subscription</h4>
+<mat-dialog-content>
+  <form #usersubscriptionForm="ngForm">
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose User</mat-label>
+          <mat-select [(ngModel)]="model.Id" #userv="ngModel" name="userdropdown" id="userdropdown" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let user of users" [value]="user.Id">
+              {{user.Username}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="userv?.hasError('required')">
+            {{getErrorMessage("user","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Lesson</mat-label>
+          <mat-select (selectionChange)="changedSelection($event.value)" [(ngModel)]="model.Lessonid" #Lessonv="ngModel"
+            name="lessondropdown" id="lessondropdown" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor=" let lesson of lessons" [value]="lesson.Lessonid">
+              {{lesson.Lesson}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Lessonv?.hasError('required')">
+            {{getErrorMessage("lesson","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Days</mat-label>
+          <mat-select [disabled]="hasvalue == false" [(ngModel)]="model.Day" #dayv="ngModel" name="daysdropdown"
+            id="daysdropdown" required (selectionChange)="changed($event)" multiple>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let day of filterarray" [value]="day.Id">
+              {{day.Descr}}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="dayv?.hasError('required')">
+            {{getErrorMessage("day","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Duration</mat-label>
+          <input matInput placeholder="Duration" min="1" max="12" style="text-align:center" type="number"
+            #Durationv="ngModel" name="Duration" [(ngModel)]="model.Duration" id="Duration" matInput required>
+          <mat-error *ngIf="Durationv?.hasError('required')">
+            {{getErrorMessage("duration","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Price</mat-label>
+          <input matInput appIsDecimalDirective type="text" [(ngModel)]="model.Price" #Pricev="ngModel" name="Price"
+            id="Price" placeholder="00.00" maxlength="5" minlength="5" required>
+          <mat-error *ngIf="Pricev?.hasError('required')">
+            {{getErrorMessage("price","required")}}
+          </mat-error>
+          <mat-error *ngIf="Pricev?.hasError('minlength')">
+            {{getErrorMessage("price","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Pricev?.hasError('maxlength')">
+            {{getErrorMessage("price","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" id="date" [(ngModel)]="model.Date" #Datev="ngModel" id="Date"
+            name="Date" placeholder="Date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="Datev?.hasError('required')">
+            {{getErrorMessage("date","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-checkbox id="discount" [(ngModel)]="model.Discount" #Discountv="ngModel" name="discount"
+      (change)="showOptions($event)" class="example-margin">Discount
+    </mat-checkbox>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!usersubscriptionForm.valid" color="primary"
+    (click)="onConfirm()" name="Close" type="submit"><i class="fa fa-save fa-lg"></i> Save</button>
+  <button mat-raised-button mat-dialog-close color="warn" name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

@@ -1,0 +1,19 @@
+<div class="card mb-4">
+  <div class="card-img-wrapper">
+    <img class="card-img-top" src="{{lessons.ImageUrl}}" alt="lesson image" onerror="this.src='../../assets/dance.png'"
+      style="display:block;width:100%;height:250px;overflow:hidden;">
+    <ul class="list-inline member-icons animate text-center">
+      <li class="list-inline-item">
+        <button class="matbutton" mat-raised-button color="primary" (click)="checkLesson(lessons.Lessonid)">
+          <i class="fa fa-caret-square-o-up"></i>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body p-1">
+    <b>
+      <h6 class="card-title text-center mb-1">
+        {{lessons.Lesson}}</h6>
+    </b>
+  </div>
+</div>

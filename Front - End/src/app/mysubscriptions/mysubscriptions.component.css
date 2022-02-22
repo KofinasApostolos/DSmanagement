@@ -1,0 +1,36 @@
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  text-align-last: center;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  text-align: center;
+}
+
+.mat-row,
+.mat-header-row {
+  min-width: 1000px;
+  width: 100%;
+}

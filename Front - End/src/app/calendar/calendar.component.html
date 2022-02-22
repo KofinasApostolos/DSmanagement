@@ -1,0 +1,75 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <div class="row">
+    <div class="first_element">
+      <app-calendar-header [(view)]="view" [(viewDate)]="viewDate">
+      </app-calendar-header>
+      <div class="alert alert-warning" *ngIf="period?.events.length === 0">
+        There are no bookings on this {{ view }}
+      </div>
+      <div [ngSwitch]="view">
+        <mwl-calendar-month-view *ngSwitchCase="'month'" (dayClicked)="dayClicked($event.day)" [viewDate]="viewDate"
+          [events]="events" [activeDayIsOpen]="false" (beforeViewRender)="beforeViewRender($event)">
+        </mwl-calendar-month-view>
+        <mwl-calendar-week-view *ngSwitchCase="'week'" (dayClicked)="dayClicked($event.day)" [viewDate]="viewDate"
+          [events]="events" (beforeViewRender)="beforeViewRender($event)">
+        </mwl-calendar-week-view>
+        <mwl-calendar-day-view *ngSwitchCase="'day'" (dayClicked)="dayClicked($event.day)" [viewDate]="viewDate"
+          [events]="events" (beforeViewRender)="beforeViewRender($event)">
+        </mwl-calendar-day-view>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="row.Username" [disabled]="!row.editing">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lastname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="row.Lastname" [disabled]="!row.editing">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Firstname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="row.Firstname" [disabled]="!row.editing">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lesson">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field>
+          <input matInput type="text" [(ngModel)]="row.Lesson" [disabled]="!row.editing">
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  <hr>
+  <app-footer></app-footer>
+</div>

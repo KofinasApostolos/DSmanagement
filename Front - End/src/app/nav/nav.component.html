@@ -1,0 +1,117 @@
+  <div>
+    <mat-toolbar color="primary">
+      <div *ngIf="loggedIn()">
+        <div fxShow="true" fxHide.gt-sm="true">
+          <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+      </div>
+      <span [ngClass]="smallWidth ? 'titlePadding': ''">Dance School</span>
+      <div *ngIf="loggedIn()">
+        <div fxShow="true" fxHide.lt-md="true">
+          <a mat-button [routerLink]="['/lessons']"><i class="fa fa-book fa-lg"></i> Lessons</a>
+          <a mat-button [routerLink]="['/suggestion']"><i class="fa fa-lightbulb-o fa-lg"></i> Suggestion</a>
+          <a *ngIf="token?.role != '0' && token?.role != '3'" mat-button [routerLink]="['/calendar']"><i
+              class="fa fa-calendar fa-lg"></i> Calendar</a>
+        </div>
+      </div>
+      <span class="example-spacer"></span>
+      <div *ngIf="smallWidth && loggedIn()">
+        <mat-toolbar-row>
+          <button mat-button [matMenuTriggerFor]="menu">Welcome {{token?.unique_name}}</button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item *ngIf="token?.role != '3'" [routerLink]="['/userprofile']"><i
+                class="fa fa-user fa-lg"></i>
+              My
+              Profile</button>
+            <button mat-menu-item *ngIf="token?.role != '0' && token?.role != '3'"
+              [routerLink]="['/teachinglessons']"><i class="fa fa-book fa-lg"></i> My Lessons</button>
+            <button mat-menu-item [routerLink]="['/subscriptions']"><i class="fa fa-book fa-lg"></i> My
+              Subscriptions</button>
+            <button mat-menu-item *ngIf="token?.role === '1'" [routerLink]="['/admin']"><i
+                class="fa fa-shield fa-lg"></i>
+              Admin Panel</button>
+            <hr>
+            <button mat-menu-item [routerLink]="['/home']" (click)="logout()"><i class="fa fa-sign-out fa-lg"></i>
+              Logout</button>
+          </mat-menu>
+          <img src="{{photoUrl}}" onerror="this.src='../../assets/default.png'" alt="user image">
+        </mat-toolbar-row>
+      </div>
+      <div *ngIf="!smallWidth && loggedIn()">
+        <button mat-button [matMenuTriggerFor]="menu">Welcome {{token?.unique_name}}</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item *ngIf="token?.role != '3'" [routerLink]="['/userprofile']"><i
+              class="fa fa-user fa-lg"></i>
+            My
+            Profile</button>
+          <button mat-menu-item *ngIf="token?.role != '0' && token?.role != '3'" [routerLink]="['/teachinglessons']"><i
+              class="fa fa-book fa-lg"></i> My Lessons</button>
+          <button mat-menu-item [routerLink]="['/subscriptions']"><i class="fa fa-book fa-lg"></i> My
+            Subscriptions</button>
+          <button mat-menu-item *ngIf="token?.role === '1'" [routerLink]="['/admin']"><i class="fa fa-shield fa-lg"></i>
+            Admin Panel</button>
+          <hr>
+          <button mat-menu-item [routerLink]="['/home']" (click)="logout()"><i class="fa fa-sign-out fa-lg"></i>
+            Logout</button>
+        </mat-menu>
+        <img src="{{photoUrl}}" onerror="this.src='../../assets/default.png'" alt="user image">
+      </div>
+      <div *ngIf="!loggedIn() && !smallWidth">
+        <form *ngIf="!loggedIn()" #loginForm="ngForm">
+          <mat-form-field appearance="fill">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" name="Username" placeholder="Username" [(ngModel)]="model.username" required
+              minlength="4" maxlength="50">
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" name="Password" placeholder="Password" [(ngModel)]="model.password" required
+              minlength="4" maxlength="50">
+          </mat-form-field>
+          <button mat-icon-button (click)="onSubmit('Login')" name="Login" type="submit" class="fa fa-sign-in fa-lg">
+          </button>
+          <button mat-icon-button (click)="loginSocial()" name="social" type="button"
+            class="fa fa-facebook-official fa-lg">
+          </button>
+        </form>
+      </div>
+      <mat-toolbar-row *ngIf="smallWidth && !loggedIn()" style="height: 0%;">
+        <!-- <form *ngIf="!loggedIn()" #loginForm="ngForm"> -->
+        <mat-form-field appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" name="Username" placeholder="Username" [(ngModel)]="model.username" required
+            minlength="4" maxlength="50">
+        </mat-form-field>
+        <!-- </form> -->
+      </mat-toolbar-row>
+      <mat-toolbar-row *ngIf="smallWidth && !loggedIn()" style="height: 0%;">
+        <mat-form-field appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" name="Password" placeholder="Password" [(ngModel)]="model.password" required
+            minlength="4" maxlength="50">
+        </mat-form-field>
+      </mat-toolbar-row>
+      <mat-toolbar-row *ngIf="smallWidth && !loggedIn()">
+        <button mat-icon-button (click)="onSubmit('Login')" name="Login" type="submit" class="fa fa-sign-in fa-lg">
+        </button>
+        <button mat-icon-button (click)="loginSocial()" name="social" type="button"
+          class="fa fa-facebook-official fa-lg">
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container fxFlexFill class="example-container">
+      <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over" opened="false" fxHide.gt-sm="true">
+        <div fxLayout="column">
+          <a mat-button [routerLink]="['/lessons']"><i class="fa fa-book fa-lg"></i> Lessons</a>
+          <a mat-button [routerLink]="['/suggestion']"><i class="fa fa-lightbulb-o fa-lg"></i> Suggestion</a>
+          <a *ngIf="token?.role != '0' && token?.role != '3'" mat-button [routerLink]="['/calendar']"><i
+              class="fa fa-calendar fa-lg"></i> Calendar</a>
+        </div>
+      </mat-sidenav>
+      <mat-sidenav-content fxFlexFill>
+        <router-outlet></router-outlet>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>

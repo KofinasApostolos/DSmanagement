@@ -1,0 +1,20 @@
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+}
+
+.example-radio-button {
+  margin: 5px;
+}
+
+/*Sets the maximum height of the modal image to 69% of the screen height*/
+.modal-body img {
+  max-height: 80vh;
+}
+
+.example-radio-group {
+  display: flex;
+  flex-direction: row;
+  margin: 15px 0;
+}

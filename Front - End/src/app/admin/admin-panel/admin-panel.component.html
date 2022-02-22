@@ -1,0 +1,45 @@
+<div class="container" style="overflow-y: auto;">
+  <form #AdminPanelForm="ngForm" id="AdminPanelForm" class="text-center">
+    <h2 style="text-align: center;"> Admin Panel</h2>
+    <hr>
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      In order to complete a program for Dance School, follow below steps: &nbsp;
+      1. Go to Users Management and Create Teachers&nbsp;
+      2. Go to Lessons Management and Create Lesson&nbsp;
+      3. Go to Teaching Program Management and Create Teaching Program &nbsp;
+      4. Go to Subscription Management and Create Subscription
+    </div>
+    <hr>
+    <div class="tab-panel">
+      <mat-tab-group mat-align-tabs="start">
+        <mat-tab label="User Management">
+          <app-user-management></app-user-management>
+        </mat-tab>
+        <!-- <tab heading="Role Management">
+            <app-role-management></app-role-management>
+          </tab> -->
+        <mat-tab label="Lesson Subscription Management">
+          <app-subscribe-management></app-subscribe-management>
+        </mat-tab>
+        <mat-tab label="Lesson Management">
+          <app-lesson-management></app-lesson-management>
+        </mat-tab>
+        <mat-tab label="Teaching Program Management">
+          <app-teachingprogram-management></app-teachingprogram-management>
+        </mat-tab>
+        <mat-tab label="User Suscription Management">
+          <app-usersubscriptions-management></app-usersubscriptions-management>
+        </mat-tab>
+        <mat-tab label="User Suggestion Management">
+          <app-usersuggestion-management></app-usersuggestion-management>
+        </mat-tab>
+        <mat-tab label="Close Day Management">
+          <app-closeday></app-closeday>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </form>
+  <hr>
+  <app-footer></app-footer>
+</div>

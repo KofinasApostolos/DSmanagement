@@ -1,0 +1,156 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <form #suggestionsForm="ngForm" style="text-align: center;">
+    <h2>Suggest your prefered lesson/time of the week and we'll make it happen</h2>
+    <h6>Allowed Hours from 01:00PM - 11:00PM (up to 3 choices!)</h6>
+    <hr>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Lesson</mat-label>
+          <mat-select [(ngModel)]="model.Lessonid" #Lessonv="ngModel" name="lesson" id="lesson" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let lesson of lesson" [value]="lesson.Lessonid">
+              {{lesson.Lesson}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Lessonv?.hasError('required')">
+            {{getErrorMessage("lesson","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Day</mat-label>
+          <mat-select [(ngModel)]="model.Dayofweek" #Dayofweekv="ngModel" name="day" id="day" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let day of day" [value]="day.Id">
+              {{day.Descr}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Dayofweekv?.hasError('required')">
+            {{getErrorMessage("day","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <input [(ngModel)]="model.Lessonstart" #Lessonstartv="ngModel" name="Lessonstart" id="Lessonstart" matInput
+            type="time" placeholder="Lesson Start" required>
+          <mat-error *ngIf="Lessonstartv?.hasError('required')">
+            {{getErrorMessage("lesson start time","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <input [(ngModel)]="model.Lessonend" #Lessonendv="ngModel" name="Lessonend" id="Lessonend" matInput
+            type="time" placeholder="Lesson End" required>
+          <mat-error *ngIf="Lessonendv?.hasError('required')">
+            {{getErrorMessage("lesson end time","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <hr>
+  <div class="example-container mat-elevation-z8">
+    <ngx-spinner [fullScreen]="false" type="ball-clip-rotate-multiple" size="medium">
+      <p class="loading">Loading...</p>
+    </ngx-spinner>
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="Id">
+        <mat-header-cell [hidden]="true" *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+        <mat-cell [hidden]="true" *matCellDef="let row">
+          <input matInput type="text" placeholder="Lessonid" [(ngModel)]="row.Id" [disabled]="true" required>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Lesson">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-select [disabled]="!row.editing" [(ngModel)]="row.Lessonid" placeholer="Lesson" required>
+            <mat-option *ngFor="let lesson of lesson" [value]="lesson.Lessonid">{{lesson.Lesson}} </mat-option>
+          </mat-select>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Dayofweek">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Day </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-select [disabled]="!row.editing" [(ngModel)]="row.Dayofweek" placeholer="Day" required>
+            <mat-option *ngFor="let day of day" [value]="day.Id">{{day.Descr}} </mat-option>
+          </mat-select>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Lessonstart">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson Start </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <input matInput type="time" placeholder="Lesson Start" [(ngModel)]="row.Lessonstart" [disabled]="!row.editing"
+            required>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Lessonend">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson End </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <input matInput type="time" placeholder="Lesson End" [(ngModel)]="row.Lessonend" [disabled]="!row.editing"
+            required>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Count">
+        <mat-header-cell [hidden]="true" *matHeaderCellDef mat-sort-header> Count </mat-header-cell>
+        <mat-cell [hidden]="true" *matCellDef="let row">
+          <input matInput type="text" placeholder="Count" [(ngModel)]="row.Count" [disabled]="!row.editing" required>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actionsColumn">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+          <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+            *ngIf="!row.editing" matTooltip="Start editing">
+            <i class="fa fa-pencil mat-icon fa-lg"></i>
+          </button>
+
+          <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+            *ngIf="row.editing" matTooltip="Stop editing">
+            <i class="fa fa-check mat-icon fa-lg"></i>
+          </button>
+
+          <button mat-icon-button style="color: green;" focusable="false"
+            (click)="updateSuggestion(row.Id, row.Lessonid, row.Dayofweek, row.Lessonstart, row.Lessonend)"
+            [disabled]="row.editing" matTooltip="Save changes">
+            <i class="fa fa-save mat-icon fa-lg"></i>
+          </button>
+
+          <button mat-icon-button color="warn" focusable="false"
+            (click)="deleteSuggestion(row.Lessonid, row.Id, row.Dayofweek,row.Lessonstart, row.Lessonend, row.Count)"
+            matTooltip="Delete record" *ngIf="!row.editing">
+            <i class="fa fa-times mat-icon fa-lg"></i>
+          </button>
+
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <hr>
+  <button [disabled]="!suggestionsForm.valid" mat-raised-button class="btnblock" color="primary"
+    (click)="submitSuggestion()" aria-label="Save" name="Save" type="button"><i class="fa fa-paper-plane fa-lg"></i>
+    Send</button>
+  <hr>
+  <app-footer></app-footer>
+</div>

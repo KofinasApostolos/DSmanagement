@@ -1,0 +1,110 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+      <mat-cell style="align-content: center;" *matCellDef="let row">
+        <input matInput type="text" [(ngModel)]="row.Id" [disabled]="true" required>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lesson">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-select [disabled]="true" [(ngModel)]="row.Lessonid" placeholer="Lesson" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let lesson of lesson" [value]="lesson.Lessonid">{{lesson.Lesson}}
+          </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Duration">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Duration </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input [disabled]="!row.editing" style="align-content: center;" min="1" max="12" style="text-align:center"
+            type="number" [(ngModel)]="row.Duration" id="Duration" matInput required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Price">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Price &euro;</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input appIsDecimalDirective matInput type="text" style="align-content: center;" placeholder="00.00"
+            [(ngModel)]="row.Price" [disabled]="!row.editing" maxlength='5' required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Discount">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Discount </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <mat-select [disabled]="!row.editing" (selectionChange)="discountChangeEvent($event.value)"
+            [(ngModel)]="row.Discount" placeholer="Discount" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let discount of discounts" [value]="discount.value">{{discount.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Discprice">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Discount Price &euro;</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input appIsDecimalDirective matInput type="text" style="align-content: center;" placeholder="00.00"
+            [(ngModel)]="row.Discprice" [disabled]="!row.editing || !discount" maxlength='5'>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="accent" (click)="createSubscription()" matTooltip="Create new record"><i
+            class="fa fa-plus mat-icon fa-lg"></i></button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <button mat-icon-button color="primary" focusable="false"
+          (click)="row.editing=!row.editing; discountChangeEvent(row.Discount);" *ngIf="!row.editing"
+          matTooltip="Start editing">
+          <i class="fa fa-pencil mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing" *ngIf="row.editing"
+          matTooltip="Stop editing">
+          <i class="fa fa-check mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="warn" focusable="false" (click)="deleteSubscription(row.Id)"
+          [disabled]="row.editing" matTooltip="Delete record" *ngIf="!row.editing">
+          <i class="fa fa-times mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button style="color: green;" focusable="false"
+          (click)="updateSubscription(row.Id, row.Lessonid, row.Duration, row.Price, row.Discount, row.Discprice)"
+          [disabled]="row.editing" matTooltip="Save changes">
+          <i class="fa fa-save mat-icon fa-lg"></i>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

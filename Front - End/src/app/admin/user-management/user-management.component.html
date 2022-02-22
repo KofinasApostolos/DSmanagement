@@ -1,0 +1,203 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="Id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> UserID </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <input matInput type="text" [(ngModel)]="row.Id" [disabled]="!row.editing" required>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="UserPhoto">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <img class="img" alt="user image" onerror="this.src='../../assets/default.png'" [src]="row.ImageUrl" />
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Username">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Username </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Username" [(ngModel)]="row.Username" [disabled]="true" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Password">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Password </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Password" maxlength="50" minlength="4" [(ngModel)]="row.Password"
+            [disabled]="!row.editing" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="ConfirmPassword">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Confirm Password </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Confirm Password" [(ngModel)]="row.ConfirmPassword"
+            [disabled]="!row.editing" maxlength="50" minlength="4" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="FirstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Firstname </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Firstname" [(ngModel)]="row.FirstName" [disabled]="!row.editing"
+            maxlength='50' minlength="4" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="LastName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lastname </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Lastname" [(ngModel)]="row.LastName" [disabled]="!row.editing"
+            maxlength='50' minlength="4" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="City">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> City </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="City" [(ngModel)]="row.City" [disabled]="!row.editing" maxlength='50'
+            required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Street">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Street </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Street" [(ngModel)]="row.Street" [disabled]="!row.editing"
+            maxlength='50' required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Area">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Area </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Area" [(ngModel)]="row.Area" [disabled]="!row.editing" maxlength='50'
+            required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> E-mail </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="E-mail" [(ngModel)]="row.Email" [disabled]="!row.editing" required
+            pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" maxlength='50'>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Phonenumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Phonenumber </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Phone Number" [(ngModel)]="row.Phonenumber" [disabled]="!row.editing"
+            maxlength='20' required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Birthdate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Birthdate </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" [matDatepicker]="picker" id="birthdate" name="birthdate" placeholder="Birthdate"
+            [(ngModel)]="row.Birthdate" [disabled]="!row.editing" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Descr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" placeholder="Description" [(ngModel)]="row.Descr" [disabled]="!row.editing"
+            maxlength='3000' minlength="50" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="IsAdmin">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> User Role </mat-header-cell>
+      <mat-cell *matCellDef="let row" [style.color]="row.IsAdmin">
+        <mat-select [disabled]="!row.editing" [(ngModel)]="row.IsAdmin" placeholer="User Role" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let role of roles" [value]="role.RoleCode">{{role.RoleDescr}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        <button matTooltip="Create new record" mat-icon-button color="accent" (click)="createUser()"><i
+            class="fa fa-plus mat-icon fa-lg"></i></button>
+        <button matTooltip="Export to Excel" mat-icon-button style="color: green;" (click)="exportXLSUsers()"><i
+            class="fa fa-file-excel-o mat-icon fa-lg"></i></button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          *ngIf="!row.editing" matTooltip="Start editing">
+          <i class="fa fa-pencil mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing" *ngIf="row.editing"
+          matTooltip="Stop editing">
+          <i class="fa fa-check mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="warn" *ngIf="!row.editing" focusable="false" (click)="deleteUser(row.Id)"
+          [disabled]="row.editing" matTooltip="Delete record">
+          <i class="fa fa-times mat-icon fa-lg"></i>
+        </button>
+
+        <button matTooltip="Save changes" mat-icon-button style="color: green;" focusable="false" (click)="updateUser(row.Id, row.Username, row.FirstName, row.LastName,
+                             row.City, row.Street, row.Area, row.Email,
+                             row.Phonenumber, row.Birthdate, row.IsAdmin,
+                             row.Descr, row.Password, row.ConfirmPassword)" [disabled]="row.editing">
+          <i class="fa fa-save mat-icon fa-lg"></i>
+        </button>
+
+        <input type="file" #file placeholder="Choose file" (change)="uploadImage(file.files, row.Id)"
+          style="display:none;">
+        <button (click)="file.click()" mat-icon-button color="accent" focusable="false" matTooltip="Upload Image"> <i
+            class="fa fa-upload mat-icon fa-lg"></i></button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium"
+    style="display: flex; justify-content: center; align-items: center">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

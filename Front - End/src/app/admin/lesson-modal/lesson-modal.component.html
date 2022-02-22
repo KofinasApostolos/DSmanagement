@@ -1,0 +1,110 @@
+<h4 mat-dialog-title>Insert Lesson</h4>
+<mat-dialog-content>
+  <form #lessonsForm="ngForm">
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lesson id</mat-label>
+          <input matInput type="text" id="Lessonid" placeholder="Lesson ID" [(ngModel)]="model.Lessonid" name="Lessonid"
+            #Lessonidv="ngModel" minlength="4" maxlength="4" required>
+          <mat-error *ngIf="Lessonidv?.hasError('required')">
+            {{getErrorMessage("lesson id","required")}}
+          </mat-error>
+          <mat-error *ngIf="Lessonidv?.hasError('minlength')">
+            {{getErrorMessage("lesson id","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Lessonidv?.hasError('maxlength')">
+            {{getErrorMessage("lesson id","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Teacher</mat-label>
+          <mat-select [(ngModel)]="model.Teacherid" #Teacherv="ngModel" name="selectedValue" id="selectedValue"
+            required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let teacher of teachers" [value]="teacher.Teacherid">
+              {{teacher.Lastname + " " + teacher.Firstname}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Teacherv?.hasError('required')">
+            {{getErrorMessage("teacher","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lesson</mat-label>
+          <input matInput type="text" [(ngModel)]="model.Lesson" #Lessonv="ngModel" name="Lesson" id="Lesson"
+            placeholder="Lesson" maxlength="100" minlength="4" required>
+          <mat-error *ngIf="Lessonv?.hasError('required')">
+            {{getErrorMessage("lesson","required")}}
+          </mat-error>
+          <mat-error *ngIf="Lessonv?.hasError('minlength')">
+            {{getErrorMessage("lesson","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Lessonv?.hasError('maxlength')">
+            {{getErrorMessage("lesson","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Youtube</mat-label>
+          <input matInput type="text" [(ngModel)]="model.Utubeurl" #Utubeurlv="ngModel" name="Utubeurl" id="Utubeurl"
+            placeholder="Youtube" maxlength="500" minlength="3" required>
+          <mat-error *ngIf="Utubeurlv?.hasError('required')">
+            {{getErrorMessage("youtube","required")}}
+          </mat-error>
+          <mat-error *ngIf="Utubeurlv?.hasError('minlength')">
+            {{getErrorMessage("youtube","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Utubeurlv?.hasError('maxlength')">
+            {{getErrorMessage("youtube","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput type="text" [(ngModel)]="model.Descr" #Descrv="ngModel" name="Descr" id="Descr"
+            placeholder="Description" required rows="3" minlength="20" maxlength="3000"></textarea>
+          <mat-error *ngIf="Descrv?.hasError('required')">
+            {{getErrorMessage("description","required")}}
+          </mat-error>
+          <mat-error *ngIf="Descrv?.hasError('minlength')">
+            {{getErrorMessage("description","minlength")}}
+          </mat-error>
+          <mat-error *ngIf="Descrv?.hasError('maxlength')">
+            {{getErrorMessage("description","maxlength")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-row mb-12">
+      <div class="col">
+        <input type="file" #file placeholder="Choose file" (change)="uploadImage(file.files)" style="display:none;">
+        <button type="button" (click)="file.click()" mat-fab style="color: white; background-color: #ff4081;"> <i
+            class="fa fa-upload fa-lg"></i> </button>
+      </div>
+      <img src="{{photourl}}" class="pull-right img-thumbnail" onerror="this.src='../../assets/default.png'"
+        alt="lesson image" style="width: 20% !important;
+                                  height: 20% !important">
+    </div>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!lessonsForm.valid" color="primary"
+    (click)="onConfirm()" name="Save" type="submit"><i class="fa fa-save fa-lg"></i> Save</button>
+  <button color="warn" mat-raised-button mat-dialog-close name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

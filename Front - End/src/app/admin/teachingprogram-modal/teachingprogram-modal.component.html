@@ -1,0 +1,78 @@
+<h4 mat-dialog-title>Insert Teaching Program</h4>
+<mat-dialog-content>
+  <form #teachingProgramForm="ngForm">
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Lesson</mat-label>
+          <mat-select [(ngModel)]="model.Lessonid" #Lessonv="ngModel" name="lesson" id="lesson" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let lesson of lessons" [value]="lesson.Lessonid">
+              {{lesson.Lesson}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="Lessonv?.hasError('required')">
+            {{getErrorMessage("lesson","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Choose Day</mat-label>
+          <mat-select [(ngModel)]="model.Id" #dayv="ngModel" name="day" id="day" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let day of day" [value]="day.Id">
+              {{day.Descr}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="dayv?.hasError('required')">
+            {{getErrorMessage("day","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lesson Start</mat-label>
+          <input matInput type="time" [(ngModel)]="model.Lessonstart" #Lessonstartv="ngModel" name="Lessonstart"
+            id="Lessonstart" placeholder="Lesson start (Min 01:00PM)" required>
+          <mat-error *ngIf="Lessonstartv?.hasError('required')">
+            {{getErrorMessage("lesson start time","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lesson End</mat-label>
+          <input matInput type="time" [(ngModel)]="model.Lessonend" #Lessonendv="ngModel" name="Lessonend"
+            id="Lessonend" placeholder="Lesson end (Max 11:00PM)" required>
+          <mat-error *ngIf="Lessonendv?.hasError('required')">
+            {{getErrorMessage("lesson end time","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Capacity</mat-label>
+          <input matInput placeholder="Capacity" min="1" max="50" style="text-align:center" type="number"
+            #Capacityv="ngModel" name="Capacity" [(ngModel)]="model.Capacity" id="Capacity" placeholder="Capacity 0-50"
+            required>
+          <mat-error *ngIf="Capacityv?.hasError('required')">
+            {{getErrorMessage("capacity","required")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!teachingProgramForm.valid" color="primary"
+    (click)="onConfirm()" name="Close" type="submit"><i class="fa fa-save fa-lg"></i> Save</button>
+  <button mat-raised-button mat-dialog-close color="warn" name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

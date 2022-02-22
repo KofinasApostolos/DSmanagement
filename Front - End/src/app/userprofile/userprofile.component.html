@@ -1,0 +1,205 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <form [formGroup]="userProfileForm" class="text-center">
+    <h2>User Profile</h2>
+    <hr>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" readonly="true" formControlName="username">
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Firstname</mat-label>
+          <input matInput type="text" placeholder="Firstname" formControlName="firstname" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['firstname']?.invalid">
+            {{getErrorMessage("text","firstname")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lastname</mat-label>
+          <input matInput type="text" placeholder="Lastname" formControlName="lastname" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['lastname']?.invalid">
+            {{getErrorMessage("text","lastname")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Phonenumber</mat-label>
+          <input matInput type="text" placeholder="phonenumber" formControlName="phonenumber" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['phonenumber']?.invalid">
+            {{getErrorMessage("text","phonenumber")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Street</mat-label>
+          <input matInput type="text" placeholder="Street" formControlName="street" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['street']?.invalid">
+            {{getErrorMessage("text","street")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Area</mat-label>
+          <input matInput type="text" placeholder="Area" formControlName="area" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['area']?.invalid">
+            {{getErrorMessage("text","area")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput type="text" placeholder="City" formControlName="city" maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['city']?.invalid">
+            {{getErrorMessage("text","city")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" required maxlength="50">
+          <mat-error *ngIf="userProfileForm.controls['email']?.invalid">
+            {{getErrorMessage("email","email")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="picker" id="birthdate" placeholder="Birthdate" formControlName="birthdate"
+            name="birthdate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="userProfileForm.controls['birthdate']?.invalid">
+            {{getErrorMessage("date","birthdate")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput type="text" placeholder="Description" formControlName="descr" rows="3" maxlength="3000"
+            required></textarea>
+          <mat-error *ngIf="userProfileForm.controls['descr']?.invalid">
+            {{getErrorMessage("text","descr")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" #input formControlName="password" placeholder="Password" required
+            maxlength="50">
+          <mat-icon (click)="showPassword(input)" class="fa" [ngClass]="{'fa-eye': collapse, 'fa-eye-slash': !collapse}"
+            matSuffix color="primary"></mat-icon>
+          <mat-error *ngIf="userProfileForm.controls['password']?.invalid">
+            {{getErrorMessage("password","password")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col">
+      <password-strength-meter [password]="userProfileForm.get('password').value"></password-strength-meter>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Confirm</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" required
+            [errorStateMatcher]="matcher" maxlength="50">
+          <mat-error *ngIf="userProfileForm.hasError('mismatch')">
+            Passwords not match
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <img src="{{photoUrl}}" class="pull-right img-thumbnail" onerror="this.src='../../assets/default.png'"
+      alt="user image" style="width: 20%;height: 20%;">
+    <div class="col-md-3">
+      <h3>Add Photo</h3>
+
+      <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+        [uploader]="uploader" class="card bg-faded p-3 text-center mb-3 my-drop-zone">
+        <i class="fa fa-upload fa-3x"></i>
+        Drop Photo Here
+      </div>
+      <br>
+      <!-- <input type="file" ng2FileSelect  [uploader]="uploader"/> -->
+      <input formControlName="filename" type="file" ng2FileSelect #file [uploader]="uploader" style="display:none;">
+      <button type="button" mat-fab style="color: white; background-color: #ff4081;" (click)="file.click()">
+        <i class="fa fa-upload fa-lg"></i>
+      </button>
+    </div>
+
+    <div class="col-md-9" style="margin-bottom: 40px" *ngIf="uploader?.queue?.length">
+
+      <h3>Upload queue</h3>
+      <p>Queue length: {{ uploader?.queue?.length }}</p>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th width="50%">Name</th>
+            <th>Size</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of uploader.queue">
+            <td><strong>{{ item?.file?.name }}</strong></td>
+            <td *ngIf="uploader.options.isHTML5" nowrap>{{ item?.file?.size/1024/1024 | number:'.2' }} MB</td>
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <div>
+          Queue progress:
+          <div class="progress mb-4">
+            <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': uploader.progress + '%' }"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-success btn-s" (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length">
+          <span class="fa fa-upload"></span> Upload
+        </button>
+        <button type="button" class="btn btn-warning btn-s" (click)="uploader.cancelAll()"
+          [disabled]="!uploader.isUploading">
+          <span class="fa fa-ban"></span> Cancel
+        </button>
+        <button type="button" class="btn btn-danger btn-s" (click)="uploader.clearQueue()"
+          [disabled]="!uploader.queue.length">
+          <span class="fa fa-trash"></span> Remove
+        </button>
+      </div>
+    </div>
+    <hr>
+    <button mat-raised-button class="btnblock" [disabled]="!userProfileForm.valid" color="primary"
+      (click)="updateProfile()" type="button"><i class="fa fa-save fa-lg"></i>
+      Save</button>
+  </form>
+  <hr>
+  <app-footer></app-footer>
+</div>

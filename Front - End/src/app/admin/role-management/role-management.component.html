@@ -1,0 +1,65 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="RoleCode">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> User Role ID </mat-header-cell>
+      <mat-cell style="align-content: center;" *matCellDef="let row">
+        <input matInput type="text" style="text-align:center" placeholder="Role Code" [(ngModel)]="row.RoleCode"
+          [disabled]="true">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="RoleDescr">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> User Role Description </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" style="text-align:center" placeholder="Role Description"
+            [(ngModel)]="row.RoleDescr" [disabled]="!row.editing" maxlength='50' required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="accent" (click)="createRole()" matTooltip="Create new record"><i
+            class="fa fa-plus mat-icon fa-lg"></i></button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          *ngIf="!row.editing" matTooltip="Start editing">
+          <i class="fa fa-pencil mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing" *ngIf="row.editing"
+          matTooltip="Stop editing">
+          <i class="fa fa-check mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="warn" focusable="false" *ngIf="!row.editing"
+          (click)="deleteRole(row.RoleCode)" [disabled]="row.editing" matTooltip="Delete record">
+          <i class="fa fa-times mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button style="color: green;" focusable="false"
+          (click)="updateRole(row.RoleCode, row.RoleDescr)" [disabled]="row.editing" matTooltip="Save changes">
+          <i class="fa fa-save mat-icon fa-lg"></i>
+        </button>
+
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

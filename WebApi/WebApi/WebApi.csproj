@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Data\ClientBookingRepository.cs" />
+    <Compile Remove="Data\UserBookingsRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.3" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.8.0" />
+    <PackageReference Include="EntityFramework" Version="6.3.0" />
+    <PackageReference Include="Google.Apis" Version="1.40.3" />
+    <PackageReference Include="MailKit" Version="2.0.6" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.1.6" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.9" />
+    <PackageReference Include="System.Data.DataSetExtensions" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>

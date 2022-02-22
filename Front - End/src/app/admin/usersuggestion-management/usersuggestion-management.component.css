@@ -1,0 +1,65 @@
+table {
+  width: 100%;
+}
+
+tr.example-detail-row {
+  height: 0;
+}
+
+.example-element-detail {
+  overflow: hidden;
+  display: flex;
+  justify-content: center !important;
+}
+
+.example-element-diagram {
+  min-width: 80px;
+  border: 2px solid black;
+  font-weight: lighter;
+  height: 104px;
+}
+
+.example-element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.example-element-description-attribution {
+  opacity: 0.5;
+}
+
+.inner-table {
+  width: 100%;
+}
+
+.inner-table mat-form-field {
+  margin-top: 15px;
+  width: 100%;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+}
+
+mat-cell {
+  justify-content: center !important;
+}
+
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  text-align-last: center;
+}
+
+.mat-row,
+.mat-header-row {
+  min-width: 1000px;
+  width: 100%;
+}

@@ -1,0 +1,9 @@
+<h4 mat-dialog-title>Watch Lesson</h4>
+<mat-dialog-content>
+  <iframe id="ytplayer" type="text/html" [src]="videoId" frameborder="0"></iframe>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-dialog-close mat-raised-button color="warn" name="Close" type="submit" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Close</button>
+</mat-dialog-actions>

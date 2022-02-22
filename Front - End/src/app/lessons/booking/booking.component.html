@@ -1,0 +1,82 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <div class="row">
+    <div class="col-sm-4">
+      <img class="card-img-top img-thumbnail" onerror="this.src='../../assets/dance.png'" src="{{photoUrl}}"
+        alt="lesson image" style="display:block;width:100%;height:250px;overflow:hidden;">
+      <div class="card">
+        <div class="card-body">
+          <div>
+            <strong>Transaction Summary</strong>
+            <hr>
+          </div>
+          <div>
+            <strong>Lesson:<p>{{lesson.Lesson}}</p></strong>
+          </div>
+          <div>
+            <strong>Teacher:<p>{{lesson.Firstname + " " + lesson.Lastname}}</p></strong>
+          </div>
+          <div>
+            <strong>Subscription Time:<p>{{"Months: " + subscription.Duration}}</p>
+            </strong>
+          </div>
+          <div>
+            <strong>Price:<p>{{"Total Price: " + price + "€"}}</p>
+            </strong>
+          </div>
+          <div>
+            <strong>Lessons per Month:<p>{{lessonsPerMonth}}</p>
+            </strong>
+          </div>
+          <!-- <div>
+              <strong>Total Price:<p>{{ price + "€"}}</p>
+              </strong>
+            </div> -->
+        </div>
+        <div class="card-footer">
+          <h2 *ngIf="paypalLoad">Paypal button is loading</h2>
+          <div id="paypal-checkout-btn"></div>
+          <div class="md-form form-sm">
+            <button class="matbutton mr-2" mat-raised-button color="primary" (click)="registerBooking()"
+              type="button"><i class="fa fa-save fa-lg"></i> Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div class="alert1 alert-info">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{resp}}
+      </div>
+      <br>
+      <div class="tab-panel">
+        <strong>
+          Teaching Days
+        </strong>
+        <div class="row mt-5">
+          <div *ngFor="let temp of tpAr" class="col-lg-2 col-md-3 col-sm-6">
+            <div class="card mb-4" style="width:100%; background-color: aliceblue;">
+              <div class="card-img-wrapper">
+                <img class="card-img-top" src="" alt="">
+                <ul class="list-inline member-icons animate text-center">
+                  <li class="list-inline-item">
+                    <mat-checkbox color="primary" class="example-margin" value="{{temp}}" name="{{temp}}"
+                      (change)="showOptions($event,temp)"></mat-checkbox>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-body p-1">
+                <h6 class="card-title text-center mb-1">
+                  {{temp.Dayofweek + " " + temp.Lessonstart + "-" + temp.Lessonend}}</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <app-footer></app-footer>
+</div>

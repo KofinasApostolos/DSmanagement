@@ -1,0 +1,173 @@
+<h4 mat-dialog-title>Insert User</h4>
+<mat-dialog-content>
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <form [formGroup]="registerUserForm" (ngSubmit)="registerUser()">
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" placeholder="Username" formControlName="username" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['username']?.invalid">
+            {{getErrorMessage("text","username")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class=" form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Firstname</mat-label>
+          <input matInput type="text" placeholder="Firstname" formControlName="firstname" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['firstname']?.invalid">
+            {{getErrorMessage("text","firstname")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Lastname</mat-label>
+          <input matInput type="text" placeholder="Lastname" formControlName="lastname" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['lastname']?.invalid">
+            {{getErrorMessage("text","lastname")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Phonenumber</mat-label>
+          <input matInput type="text" placeholder="phonenumber" formControlName="phonenumber" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['phonenumber']?.invalid">
+            {{getErrorMessage("text","phonenumber")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Street</mat-label>
+          <input matInput type="text" placeholder="Street" formControlName="street" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['street']?.invalid">
+            {{getErrorMessage("text","street")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Area</mat-label>
+          <input matInput type="text" placeholder="Area" formControlName="area" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['area']?.invalid">
+            {{getErrorMessage("text","area")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>City</mat-label>
+          <input matInput type="text" placeholder="City" formControlName="city" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['area']?.invalid">
+            {{getErrorMessage("text","city")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" id="email" placeholder="E-mail" formControlName="email" required maxlength="50">
+          <mat-error *ngIf="registerUserForm.controls['email']?.invalid">
+            {{getErrorMessage("email","email")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="picker" id="birthdate" placeholder="Birthdate" formControlName="birthdate"
+            name="birthdate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="registerUserForm.controls['birthdate']?.invalid">
+            {{getErrorMessage("date","birthdate")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Description</mat-label>
+          <textarea matInput type="text" placeholder="Description" formControlName="descr" required rows="3" required
+            maxlength="300"></textarea>
+          <mat-error *ngIf="registerUserForm.controls['descr']?.invalid">
+            {{getErrorMessage("text","descr")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-8">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" #input formControlName="password" placeholder="Password" required
+            maxlength="50">
+          <mat-icon (click)="showPassword(input)" class="fa" [ngClass]="{'fa-eye': collapse, 'fa-eye-slash': !collapse}"
+            matSuffix color="primary"></mat-icon>
+          <mat-error *ngIf="registerUserForm.controls['password']?.invalid">
+            {{getErrorMessage("password","password")}}
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="col">
+      <password-strength-meter [password]="registerUserForm.get('password').value"></password-strength-meter>
+    </div>
+    <div class="form-row mb-4">
+      <div class="col">
+        <mat-form-field class="maxwidth" appearance="fill">
+          <mat-label>Confirm</mat-label>
+          <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm Password" required
+            [errorStateMatcher]="matcher" maxlength="50">
+          <mat-error *ngIf="registerUserForm.hasError('mismatch')">
+            Passwords not match
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="form-row mb-12">
+      <div class="col">
+        <label>Select User Role: </label>
+        <mat-radio-group formControlName="IsAdmin" (change)="changeRadioValue()">
+          <mat-radio-button style="margin-left: 2%;" value="{{roles.RoleCode}}" *ngFor="let roles of roles">
+            {{roles.RoleDescr}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+    </div>
+
+    <div class="form-row mb-8">
+      <div class="col">
+        <input type="file" #file placeholder="Choose file" (change)="uploadImage(file.files)" style="display:none;">
+        <button type="button" (click)="file.click()" mat-fab style="color: white; background-color: #ff4081;"> <i
+            class="fa fa-upload fa-lg"></i> </button>
+      </div>
+      <img src="{{photourl}}" class="pull-right img-thumbnail" onerror="this.src='../../assets/default.png'"
+        alt="lesson image" style="width: 20%;
+                                    height: 20%;">
+    </div>
+    <hr>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-raised-button [mat-dialog-close]="true" [disabled]="!registerUserForm.valid" color="primary"
+    (click)="onConfirm()" name="Save" type="submit"><i class="fa fa-save"></i>
+    Save</button>
+  <button mat-raised-button mat-dialog-close name="Close" color="warn" type="button" (click)="onCancel()"><i
+      class="fa fa-close fa-lg"></i>
+    Cancel</button>
+</mat-dialog-actions>

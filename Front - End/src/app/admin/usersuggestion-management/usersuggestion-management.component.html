@@ -1,0 +1,96 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter1($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+
+    <ng-container matColumnDef="lessonid">
+      <mat-header-cell style="text-align: center;" mat-sort-header *matHeaderCellDef>
+        Lesson </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-select [disabled]="true" [(ngModel)]="element.lessonid">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let lesson of lesson" [value]="lesson.Lessonid">{{lesson.Lesson}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dayofweek">
+      <mat-header-cell style="text-align: center;" mat-sort-header *matHeaderCellDef> Day </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <mat-select [disabled]="true" [(ngModel)]="element.dayofweek">
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let day of day" [value]="day.Id">{{day.Descr}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lessonstart">
+      <mat-header-cell style="text-align: center;" mat-sort-header *matHeaderCellDef> Lesson Start </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <input matInput [disabled]="true" type="text" [(ngModel)]="element.lessonstart">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="lessonend">
+      <mat-header-cell style="text-align: center;" mat-sort-header *matHeaderCellDef> Lesson End </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <input matInput [disabled]="true" type="text" [(ngModel)]="element.lessonend">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Count">
+      <mat-header-cell style="text-align: center;" mat-sort-header *matHeaderCellDef> Count </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <input style="align-content: center;" matInput [disabled]="true" type="text" [(ngModel)]="element.count">
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell style="text-align: center;" *matHeaderCellDef> Transfer </mat-header-cell>
+      <mat-cell *matCellDef="let element"><button mat-icon-button color="primary" focusable="false"
+          (click)="transferToCore(element.lessonid, element.dayofweek, element.lessonstart, element.lessonend)"
+          matTooltip="Transfer Program">
+          <i class="fa fa-arrow-right mat-icon fa-lg"></i>
+        </button></mat-cell>
+    </ng-container>
+
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail" *ngIf="element.users?.data.length"
+          [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+          <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+            <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+            <mat-table #innerTables #innerSort="matSort" [dataSource]="element.users" matSort>
+              <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                  <input style="align-content: center;" matInput [disabled]="true" type="text"
+                    value="{{element[innerColumn]}}">
+                </mat-cell>
+              </ng-container>
+              <mat-header-row *matHeaderRowDef="innerDisplayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></mat-row>
+            </mat-table>
+          </div>
+        </div>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let element; columns: columnsToDisplay;"
+      [class.example-element-row]="element.addresses?.data.length"
+      [class.example-expanded-row]="expandedElement === element" (click)="toggleRow(element)">
+    </mat-row>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

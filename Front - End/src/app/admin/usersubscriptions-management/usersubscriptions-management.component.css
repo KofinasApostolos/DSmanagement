@@ -1,0 +1,33 @@
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+::ng-deep .mat-select-value-text {
+  white-space: pre-wrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+  text-align-last: center;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+
+mat-header-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.mat-row,
+.mat-header-row {
+  min-width: 1500px;
+  width: 100%;
+}
+

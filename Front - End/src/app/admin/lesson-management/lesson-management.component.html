@@ -1,0 +1,107 @@
+<div class="example-header">
+  <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<div class="example-container mat-elevation-z8">
+  <ngx-spinner [fullScreen]="false" type="square-jelly-box" size="medium">
+    <p style="color: #3f51b5"> Loading... </p>
+  </ngx-spinner>
+  <mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="Lessonid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson ID </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <input matInput type="text" style="text-align:center" [(ngModel)]="row.Lessonid" [disabled]="true" required>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Image">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Image </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <img class="img" alt="lesson image" onerror="this.src='../../assets/dance.png'" [src]="row.ImageUrl" />
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Lesson">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" style="text-align:center" [(ngModel)]="row.Lesson" [disabled]="true"
+            maxlength='100' minlength="4" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Teacherid">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Teacher </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-select [disabled]="!row.editing" [(ngModel)]="row.Teacherid" placeholer="Teacher" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let teacher of teachers" [value]="teacher.Teacherid">
+            {{teacher.Lastname + " " + teacher.Firstname}} </mat-option>
+        </mat-select>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Description">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Description </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" style="text-align:center" placeholder="Description" [(ngModel)]="row.Descr"
+            [disabled]="!row.editing" maxlength='3000' minlength="50" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Youtube">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Youtube </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-form-field floatLabel="{{ row.editing ? 'float' : 'never'}}">
+          <input matInput type="text" style="text-align:center" placeholder="Youtube" [(ngModel)]="row.Utubeurl"
+            [disabled]="!row.editing" maxlength='500' minlength="3" required>
+        </mat-form-field>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actionsColumn">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-icon-button color="accent" (click)="createLesson()" matTooltip="Create new record"><i
+            class="fa fa-plus mat-icon fa-lg"></i></button>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          matTooltip="Start editing" *ngIf="!row.editing">
+          <i class="fa fa-pencil mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="primary" focusable="false" (click)="row.editing=!row.editing"
+          matTooltip="Stop editing" *ngIf="row.editing">
+          <i class="fa fa-check mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button color="warn" focusable="false" (click)="deleteLesson(row.Lessonid)"
+          matTooltip="Delete record" *ngIf="!row.editing" [disabled]="row.editing">
+          <i class="fa fa-times mat-icon fa-lg"></i>
+        </button>
+
+        <button mat-icon-button style="color: green;" focusable="false" matTooltip="Save changes"
+          (click)="updateLesson(row.Lessonid, row.Teacherid, row.Lesson, row.Descr, row.Utubeurl)"
+          [disabled]="row.editing">
+          <i class="fa fa-save mat-icon fa-lg"></i>
+        </button>
+
+        <input type="file" #file (change)="upload_image(file.files, row.Lessonid)" style="display:none;">
+        <button (click)="file.click()" mat-icon-button color="accent" focusable="false" matTooltip="Upload Image"> <i
+            class="fa fa-upload mat-icon fa-lg"></i></button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    </mat-row>
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

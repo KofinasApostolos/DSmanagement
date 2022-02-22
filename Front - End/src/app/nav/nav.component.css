@@ -1,0 +1,39 @@
+.dropdown-toggle,
+.dropdown-item {
+  cursor: pointer;
+}
+
+img {
+  max-height: 50px;
+  border: 2px solid white;
+  display: inline;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2de6e6;
+  border-color: #2de6e6;
+}
+
+.bg-primary {
+  background-color: #3f51b5 !important;
+}
+
+.btn-primary1 {
+  color: #fff;
+  background-color: #008cba;
+  border-color: #008cba;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-toolbar-row,
+.mat-toolbar-single-row {
+  height: 64px;
+}
+
+.titlePadding {
+  padding-left: 5%;
+}

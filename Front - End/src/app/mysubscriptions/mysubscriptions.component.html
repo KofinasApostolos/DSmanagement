@@ -1,0 +1,101 @@
+<ngx-spinner [fullScreen]="true" type="square-jelly-box" size="medium">
+  <p style="color: #3f51b5"> Loading... </p>
+</ngx-spinner>
+<div class="container" style="overflow-y: auto;">
+  <h2 style="text-align: center;">My Subscriptions</h2>
+  <hr>
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput type="text" (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+  <div class="example-container mat-elevation-z8">
+    <mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="Lesson">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Lesson </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Lesson" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Duration">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Months </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Duration" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Price &euro;</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Price" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Date">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Date </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [matDatepicker]="picker" id="date" name="date" [(ngModel)]="row.Date"
+              [disabled]="true" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="ExpDate">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Exp. Date </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [matDatepicker]="picker" id="expdate" name="expdate" [(ngModel)]="row.ExpDate"
+              [disabled]="true" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="State">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> State </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.State" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Discount">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Discount </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Discount" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="Days">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Days </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-form-field>
+            <input matInput type="text" [(ngModel)]="row.Days" [disabled]="true">
+          </mat-form-field>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <hr>
+  <app-footer></app-footer>
+</div>
